@@ -42,8 +42,6 @@ public class Credentials {
 	@OneToMany(mappedBy = "credential", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Esame> esami;
 	
-	public Credentials(String nome) {
-		this.username=nome;
-	}
+
 	
 }

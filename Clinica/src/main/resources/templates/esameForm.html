@@ -47,6 +47,7 @@
 						<select id="credential" th:field="*{credential}">
 							<option th:each="credential : ${credentials}"
 								th:value="${credential.id}"
+								th:if= "${credential.role}=='DEFAULT'" 
 								th:text="${credential.user.nome + ' ' + credential.user.cognome}"></option>
 						</select>
 					</div>
