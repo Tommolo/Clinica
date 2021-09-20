@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<link th:href="@{/css/adminOp/artistaForm.css}" rel="stylesheet">
+<head
+	th:replace="fragments/myH.html :: headerfiles(title=#{title.formMedico})">
+<meta charset="utf-8" content="width=device-width, initial-scale=1">
+</head>
+<body>
+	<nav th:replace="fragments/myH.html :: nav(index='/default')"></nav>
+	<section>
+		<div class="title">
+			<p>Inserisci i dati del medico</p>
+		</div>
+		<form th:action="@{/admin/medico}" method="POST" th:object="${medico}"
+			enctype="multipart/form-data">
+			<div th:if="${#fields.hasGlobalErrors()}">
+				<p th:each="err : ${#fields.globalErrors()}" th:text="${err}"
+					style="text-align: center; color: red">...</p>
+			</div>
+			<div class="inserisci">
+				<div class="row">
+					<div class="col-1">
+						<label>Nome:</label>
+					</div>
+					<div class="col-2">
+						<input type="text" th:field="*{nome}" />
+					</div>
+					<div th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></div>
+				</div>
+				<div class="row">
+					<div class="col-1">
+						<label>Cognome:</label>
+					</div>
+					<div class="col-2">
+						<input type="text" th:field="*{cognome}" />
+					</div>
+					<div th:if="${#fields.hasErrors('cognome')}" th:errors="*{cognome}"></div>
+				</div>
+				<div class="row">
+					<div class="col-1">
+						<label>Data di nascita:</label>
+					</div>
+					<div class="col-2">
+						<input type="date" th:field="*{dataDiNascita}" />
+					</div>
+					<div th:if="${#fields.hasErrors('dataDiNascita')}"
+						th:errors="*{dataDiNascita}"></div>
+				</div>
+				<div class="row">
+					<div class="col-1">
+						<label>Luogo di nascita:</label>
+					</div>
+					<div class="col-2">
+						<input type="text" th:field="*{luogoDiNascita}" />
+					</div>
+					<div th:if="${#fields.hasErrors('luogoDiNascita')}"
+						th:errors="*{luogoDiNascita}"></div>
+				</div>
+				<div class="row">
+					<div class="col-1">
+						<label>Nazionalità:</label>
+					</div>
+					<div class="col-2">
+						<input type="text" th:field="*{nazionalita}" />
+					</div>
+					<div th:if="${#fields.hasErrors('nazionalita')}"
+						th:errors="*{nazionalita}"></div>
+				</div>
+				<div class="row">
+					<div class="col-1">
+						<label>Biografia:</label>
+					</div>
+					<div class="col-2">
+						<textarea th:field="*{biografia}" id="bio"
+							style="height: 200px; width: 50%" /></textarea>
+					</div>
+					<div th:if="${#fields.hasErrors('biografia')}"
+						th:errors="*{biografia}"></div>
+				</div>
+				<div class="row">
+					<div class="col-1">
+						<label>Foto:</label>
+					</div>
+					<div class="col-2">
+						<input type="file" name="image" accept="image/png, image/jpeg" />
+					</div>
+				</div>
+				<div class="but">
+					<span><button type="submit" id="invio">Invio</button></span>
+				</div>
+			</div>
+		</form>
+	</section>
+	<footer th:replace="fragments/myH.html :: fondo(index='/')"></footer>
+</body>
+</html>

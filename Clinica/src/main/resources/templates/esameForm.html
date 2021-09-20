@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<link th:href="@{/css/adminOp/artistaForm.css}" rel="stylesheet">
+<head
+	th:replace="fragments/myH.html :: headerfiles(title=#{title.formEsame})">
+<meta charset="utf-8" content="width=device-width, initial-scale=1">
+</head>
+<body>
+	<nav th:replace="fragments/myH.html :: nav(index='/default')"></nav>
+	<section>
+		<div class="title">
+			<p>Inserisci i dati dell'esame</p>
+		</div>
+		<form th:action="@{/admin/esame}" method="POST" th:object="${esame}"
+			enctype="multipart/form-data">
+			<div th:if="${#fields.hasGlobalErrors()}">
+				<p th:each="err : ${#fields.globalErrors()}" th:text="${err}"
+					style="text-align: center; color: red">...</p>
+			</div>
+			<div class="inserisci">
+				<div class="row">
+					<div class="col-1">
+						<label>Nome:</label>
+					</div>
+					<div class="col-2">
+						<input type="text" th:field="*{titolo}" />
+					</div>
+					<div th:if="${#fields.hasErrors('titolo')}" th:errors="*{titolo}"></div>
+				</div>
+				<div class="row">
+					<div class="col-1">
+						<label>Descrizione:</label>
+					</div>
+					<div class="col-2">
+						<textarea th:field="*{descrizione}" class="bio"
+							style="height: 200px; width: 50%" /></textarea>
+					</div>
+					<div th:if="${#fields.hasErrors('descrizione')}"
+						th:errors="*{descrizione}"></div>
+				</div>
+				<div class="row">
+					<div class="col-1">
+						<label>Paziente:</label>
+					</div>
+					<div class="col-2">
+						<select id="credential" th:field="*{credential}">
+							<option th:each="credential : ${credentials}"
+								th:value="${credential.id}"
+								th:text="${credential.user.nome + ' ' + credential.user.cognome}"></option>
+						</select>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-1">
+						<label>Tipologia di Esame:</label>
+					</div>
+					<div class="col-2">
+						<select id="tipoEsame" th:field="*{tipoEsame}">
+							<option th:each="tipoEsame : ${tipoEsami}"
+								th:value="${tipoEsame.id}" th:text="${tipoEsame.nome}"></option>
+						</select>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-1">
+						<label>Data di Prenotazione:</label>
+					</div>
+					<div class="col-2">
+						<input type="date" th:field="*{dataDiPrenotazione}" />
+					</div>
+					<div th:if="${#fields.hasErrors('dataDiPrenotazione')}"
+						th:errors="*{dataDiPrenotazione}"></div>
+				</div>
+				<div class="row">
+					<div class="col-1">
+						<label>Foto:</label>
+					</div>
+					<div class="col-2">
+						<input type="file" name="image" accept="image/png, image/jpeg" />
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-1">
+						<a href="medicoForm" th:href="@{/admin/medico}">Aggiungi un
+							nuovo medico</a>
+					</div>
+					<div class="col-2">
+						<a href="tipoEsameForm" th:href="@{/admin/tipoEsame}">Aggiungi
+							una nuova Tipologia di Esame</a>
+					</div>
+				</div>
+				<div class="row">
+					<div class="pad">
+						<span><button type="submit" id="invio">Invio</button></span>
+					</div>
+				</div>
+			</div>
+		</form>
+	</section>
+	<footer th:replace="fragments/myH.html :: fondo(index='/')"></footer>
+</body>
+</html>

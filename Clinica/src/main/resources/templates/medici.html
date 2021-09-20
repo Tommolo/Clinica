@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<link rel="stylesheet" th:href="@{/css/artista/artisti.css}" />
+<head
+	th:replace="fragments/myH.html :: headerfiles(title=#{header.medici})">
+<meta charset="utf-8" content="width=device-width, initial-scale=1">
+</head>
+<body>
+	<nav class='topnav'>
+		<a th:href="@{/index}">Home</a> <a class="active" href="artisti"
+			th:href="@{/medici}">Medici</a> <a href="tipoEsami.html"
+			th:href="@{/tipoEsami}">TipologieEsami</a> <a href="esami.html"
+			th:href="@{/esami}">Esami</a> <a href="#informazioni">Informazioni</a>
+		<div class="dropdown">
+			<button class="dropbtn">
+				Utente <i class="fa fa-caret-down"></i>
+			</button>
+			<div class="dropdown-content">
+				<div sec:authorize="isAnonymous()">
+					<a th:href="@{/login}" th:text="#{index.login}">Login</a> <a
+						th:href="@{/register}" th:text="#{index.register}">Registrati</a>
+				</div>
+				<div sec:authorize="isAuthenticated()">
+					<a th:href="@{/logout}">Esci</a>
+				</div>
+			</div>
+		</div>
+		<div class="dropdown">
+			<button class="dropbtn">
+				Follow Us! <i class="fa fa-caret-down"></i>
+			</button>
+			<div class="dropdown-content">
+				<a href="#"><img th:src="@{/images/home/facebook.png}"
+					height="16px" width="16px"> Facebook</a> <a href="#"><img
+					th:src="@{/images/home/instagram.png}" height="16px" width="16px">
+					Instagram</a>
+			</div>
+		</div>
+	</nav>
+	<section>
+		<div class="list">
+			<p>
+				<b>Medici</b>
+			</p>
+			<ul>
+				<li th:each="medico : ${medici}">
+					<div>
+						<a href="medico.html" th:href="@{'/medico' + '/' + ${medico.id}}">
+							<span th:text="${medico.nome}">Nome</span> <span
+							th:text="${medico.cognome}"> Cognome</span>
+						</a> <span class="canc" sec:authorize="hasAuthority('ADMIN')"><a
+							href="medici.html" th:href="@{'/admin/medico/' + ${medico.id}}">
+								Elimina</a></span>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</section>
+	<footer th:replace="fragments/myH.html :: fondo(index='/default')"></footer>
+</body>
+</html>

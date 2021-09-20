@@ -1,0 +1,52 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<link rel="stylesheet" th:href=@{/css/collezione/collezione.css} />
+<head
+	th:replace="fragments/myH.html :: headerfiles(title=#{pageTitle.tipoEsame})">
+<meta charset="utf-8" content="width=device-width, initial-scale=1">
+</head>
+<body>
+	<nav th:replace="fragments/myH.html :: nav(index='/default')"></nav>
+	<section th:if="${tipoEsame}" th:object="${tipoEsame}">
+		<div class="title">
+			<h1 th:text="*{nome}">
+				<b></b>
+			</h1>
+			<div>
+				<b>Descrizione: </b>
+				<p th:text="*{descrizione}">Descrizione</p>
+			</div>
+		</div>
+		<!-- voglio provare a fare l'effetto transizione sulla foto, quindi prima prova -->
+		<!-- flexbox container -->
+		<div class=box>
+			<div class="row">
+				<th:block th:each="esame : ${esami}">
+					<div class="sposta">
+						<div class="container">
+							<img th:src="@{${quadro.photosImagePath}}" alt="Quadro"
+								class="image" width="350px" height="auto">
+							<div class="overlay">
+								<div class="text">
+									<div>
+										<a href="medico.html"
+											th:href="@{'/medico' + '/' + ${esame.medico.id}}"
+											th:text="${esame.medico.getNome() + ' ' + esame.medico.getCognome()}">Giorgio</a>
+									</div>
+									<div>
+										<a href="esame.html" th:href="@{'/esame' + '/' + ${esame.id}}"
+											th:text="${esame.titolo}">Titolo</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</th:block>
+			</div>
+		</div>
+	</section>
+	<footer th:replace="fragments/myH.html :: fondo(index='/default')"></footer>
+</body>
+</html>

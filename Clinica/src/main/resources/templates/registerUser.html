@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head
+	th:replace="fragments/myH.html :: headerfiles(title='Registra Utente')">
+</head>
+<style>
+.title {
+	height: 15vh;
+	width: 100%;
+	display: table;
+	background-image: url("/images/userOp/m.jpg");
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.title p {
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+	font-size: 35px;
+	color: black;
+}
+
+.box {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.element {
+	padding: 5px;
+	vertical-align: middle;
+	text-align: center;
+}
+
+input {
+	width: 50%;
+	height: 2vh;
+	border-radius: 5px;
+	border-color: #DCDCDC;
+	background-color: #DCDCDC;
+	outline: none;
+}
+
+.button:hover {
+	width: 15%;
+	height: 2.5vh;
+	border: none;
+	border-radius: 5px;
+	background-color: #7CFC00;
+	color: white;
+}
+
+.button {
+	width: 15%;
+	height: 2.5vh;
+	border: none;
+	border-radius: 5px;
+	background-color: white;
+	color: #7CFC00;
+}
+</style>
+<body>
+	<nav th:replace="fragments/myH.html :: nav(index='/default')"></nav>
+	<div class="title">
+		<p>
+			<b>Registrazione</b>
+		</p>
+	</div>
+	<form th:action="@{/register}" method="POST">
+		<div class="box">
+			<div class="element">
+				<div>
+					<input type="text" placeholder="Username" required
+						th:field="${credentials.username}" />
+				</div>
+				<div th:if="${#fields.hasErrors('credentials.username')}"
+					th:errors="${credentials.username}" th:style="'color:red'"></div>
+			</div>
+			<div class="element">
+				<div>
+					<input type="password" placeholder="Password" required
+						th:field="${credentials.password}" />
+				</div>
+				<div th:if="${#fields.hasErrors('credentials.password')}"
+					th:errors="${credentials.password}" th:style="'color:red'"></div>
+			</div>
+			<div class="element">
+				<div>
+					<input type="text" placeholder="Nome" required
+						th:field="${user.nome}" />
+				</div>
+				<div th:if="${#fields.hasErrors('user.nome')}"
+					th:errors="${user.nome}" th:style="'color:red'"></div>
+			</div>
+			<div class="element">
+				<div>
+					<input type="text" placeholder="Cognome" required
+						th:field="${user.cognome}" />
+				</div>
+				<div th:if="${#fields.hasErrors('user.cognome')}"
+					th:errors="${user.cognome}" th:style="'color:red'"></div>
+			</div>
+			<div class="element">
+				<button type="submit" class="button">
+					<b>REGISTRATI</b>
+				</button>
+			</div>
+		</div>
+	</form>
+	<footer th:replace="fragments/myH.html :: fondo(index)"></footer>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<link rel="stylesheet" th:href="@{/css/quadro/quadri.css}" />
+<head
+	th:replace="fragments/myH.html :: headerfiles(title=#{header.esami})">
+<meta charset="utf-8" content="width=device-width, initial-scale=1">
+</head>
+<body>
+	<nav class='topnav'>
+		<a th:href="@{/index}">Home</a> <a href="medici" th:href="@{/medici}">Medici</a>
+		<a th:href="@{/tipoEsami}">TipologieEsami</a> <a class="active"
+			href="medici" th:href="@{/esami}">Esami</a> <a href="#informazioni">Informazioni</a>
+		<div class="dropdown">
+			<button class="dropbtn">
+				Utente <i class="fa fa-caret-down"></i>
+			</button>
+			<div class="dropdown-content">
+				<div sec:authorize="isAnonymous()">
+					<a th:href="@{/login}" th:text="#{index.login}">Login</a> <a
+						th:href="@{/register}" th:text="#{index.register}">Registrati</a>
+				</div>
+				<div sec:authorize="isAuthenticated()">
+					<a th:href="@{/logout}">Esci</a>
+				</div>
+			</div>
+		</div>
+		<div class="dropdown">
+			<button class="dropbtn">
+				Follow Us! <i class="fa fa-caret-down"></i>
+			</button>
+			<div class="dropdown-content">
+				<a href="#"><img th:src="@{/images/home/facebook.png}"
+					height="16px" width="16px"> Facebook</a> <a href="#"><img
+					th:src="@{/images/home/instagram.png}" height="16px" width="16px">
+					Instagram</a>
+			</div>
+		</div>
+	</nav>
+	<section>
+		<div class="list">
+			<p>
+			<p>Lista di Esami clinici</p>
+			<ul>
+				<li th:each="esame : ${esami}"><a href="esame.html"
+					th:href="@{'/esame' + '/' + ${esame.id}}" th:text="${esame.titolo}">Titolo</a>
+					<span class="canc" sec:authorize="hasAuthority('ADMIN')"><a
+						href="esami.html" th:href="@{'/admin/esame/' + ${esame.id}}">
+							Elimina</a></span></li>
+			</ul>
+		</div>
+	</section>
+
+	<footer th:replace="fragments/myH.html :: fondo(index='/default')"></footer>
+</body>
+</html>

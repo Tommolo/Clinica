@@ -1,0 +1,38 @@
+.body {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
+
+.row {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+}
+
+.column {
+	display: flex;
+	flex-direction: column;
+	padding: 25px 15px 25px 15px;
+}
+
+.infot a {
+	color: black;
+	text-decoration: none;
+}
+
+.infot a:hover {
+	color: gray;
+	text-decoration: none;
+}
+
+.title {
+	font-size: 25px;
+	text-align: center;
+	padding: 15px 5px 5px 5px;
+}
+
+.column img {
+	height: auto;
+	width: 750px;
+}

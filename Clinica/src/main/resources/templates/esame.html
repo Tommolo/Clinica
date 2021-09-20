@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<link rel="stylesheet" th:href="@{/css/quadro/quadro.css}" />
+<head
+	th:replace="fragments/myH.html :: headerfiles(title='pageTitle.esame')">
+</head>
+<meta charset="utf-8" content="width=device-width, initial-scale=1">
+</head>
+<body>
+	<nav th:replace="fragments/myH.html :: nav(index='/default')"></nav>
+	<section>
+		<div th:if="${esame}" th:object="${esame}">
+			<h1 class="title" th:text="*{titolo}">
+				<b>Nome</b>
+			</h1>
+			<div class="row">
+				<div class="column">
+					<img th:src="@{${esame.photosImagePath}}">
+				</div>
+				<div class="column">
+					<b>Descrizione: </b>
+					<p class="infot" th:text="*{descrizione}">"Lorem ipsum dolor
+						sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+						incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+						veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+						ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+						voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+						Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
+						officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit
+						amet, consectetur adipiscing elit, sed do eiusmod tempor
+						incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+						veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+						ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+						voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+						Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
+						officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit
+						amet, consectetur adipiscing elit, sed do eiusmod tempor
+						incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+						veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+						ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+						voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+						Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
+						officia deserunt mollit anim id est laborum."</p>
+					<div class="column">
+						<b>Tipologia Esame: </b>
+						<p class="infot" th:text="*{tipoEsame.nome}">
+					</div>
+					<div class="el">
+						<b>Data di Prenotazione: </b><span class="datiArt"
+							th:text="*{dataDiPrenotazione}"> 18/02/2006 </span>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</section>
+	<footer th:replace="fragments/myH.html :: fondo(index='/default')"></footer>
+</body>
+</html>

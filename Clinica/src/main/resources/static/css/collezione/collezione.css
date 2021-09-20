@@ -1,0 +1,88 @@
+/*text settings*/
+.title {
+	text-align: center;
+	padding: 25px 25px;
+}
+
+.box {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+/*flexbox container settings*/
+.row {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	flex-wrap: wrap;
+	align-items: center;
+	margin: 50px 20px 50px 20px;
+}
+
+.sposta {
+	width: 20%;
+	height: auto;
+	padding: 20px;
+}
+
+/*images fading effects*/
+.container {
+	position: relative;
+	width: auto;
+	height: auto;
+	text-align: center;
+	margin-top: 50px;
+	margin-bottom: 50px;
+	height: 300px;
+	width: 300px;
+}
+
+.overlay {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	height: 100%;
+	width: 100%;
+	opacity: 0;
+	transition: .5s ease;
+	background-color: #D3D3D3;
+}
+
+.container:hover .overlay {
+	opacity: 0.9;
+}
+
+.container a {
+	text-decoration: none;
+	color: #696969;
+}
+
+.container a:hover {
+	text-decoration: none;
+	color: #C0C0C0;
+	text-shadow: all;
+}
+
+.image {
+	display: block;
+	width: 300px;
+	height: 300px;
+	/*margin: 15px 25px 25px 15px;*/
+}
+
+.text {
+	color: white;
+	font-size: 20px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+}
+
+.title h1 {
+	font-size: 35px;
+}

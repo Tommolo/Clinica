@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<style>
+.title {
+	height: 15vh;
+	width: 100%;
+	display: table;
+	background-image: url("/images/userOp/m.jpg");
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.testo {
+	text-align: center;
+	padding: 15px 20px;
+	font-size: 25px;
+}
+
+.button {
+	text-align: center;
+	padding: 15px 20px;
+}
+
+.back {
+	width: 10%;
+	height: auto;
+	background-color: #FAFAD2;
+	border: none;
+}
+
+.back:focus {
+	background-color: #F0E68C;
+}
+</style>
+<head
+	th:replace="fragments/myH.html :: headerfiles(title='Esito Registrazione')">
+</head>
+<body>
+	<nav th:replace="fragments/myH.html :: nav(index='/default')"></nav>
+	<div class="title"></div>
+	<div class="testo">
+		<b>Registrazione avvenuta con successo!</b>
+	</div>
+	<div class="button">
+		<a href="index" th:href="@{/index}"><button type="button"
+				class="back">Torna indietro</button></a>
+	</div>
+	<footer th:replace="fragments/myH.html :: fondo(index)"></footer>
+</body>
+</html>

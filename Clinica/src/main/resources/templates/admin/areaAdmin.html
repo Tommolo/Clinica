@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<link rel="stylesheet" th:href=@{/css/adminOp/admin.css} />
+<head
+	th:replace="fragments/myH.html :: headerfiles(title=#{title.admin})">
+<meta charset="utf-8" content="width=device-width, initial-scale=1">
+</head>
+<body>
+	<nav th:replace="fragments/myH.html :: nav(index='/default')"></nav>
+	<section>
+		<div class="title">
+			<p>Azioni possibili</p>
+		</div>
+		<div class="container">
+			<div class="list">
+				<a href="esameForm" th:href="@{/admin/esame}">&#9829; Inserisci
+					un nuovo esame</a> <a href="medicoForm" th:href="@{/admin/medico}">&#9829;
+					Inserisci un nuovo medico</a> <a href="tipoEsameForm"
+					th:href="@{/admin/tipoEsame}">&#9829; Crea una nuova Tipologia
+					di esame</a> <a href="medici" th:href="@{/medici}">&#9829; Elimina
+					medico</a> <a href="esami" th:href="@{/esami}">&#9829; Elimina
+					esame</a> <a href="tipoEsami" th:href="@{/tipoEsami}">&#9829;
+					Elimina una tipologia di esame</a>
+			</div>
+		</div>
+	</section>
+	<footer th:replace="fragments/myH.html :: fondo(index='/default')"></footer>
+</body>
+</html>

@@ -1,0 +1,30 @@
+.title {
+	height: 15vh;
+	width: 100%;
+	display: table;
+	background-image: url("/images/userOp/q.jpg");
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.testo {
+	text-align: center;
+	padding: 15px 20px;
+	font-size: 25px;
+}
+
+.button {
+	text-align: center;
+	padding: 15px 20px;
+}
+
+.back {
+	width: 10%;
+	height: auto;
+	background-color: #FAFAD2;
+	border: none;
+}
+
+.back:focus {
+	background-color: #F0E68C;
+}

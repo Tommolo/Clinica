@@ -1,0 +1,99 @@
+.body {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
+
+.flex-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	padding: 25px 15px 25px 15px;
+	margin: 0;
+}
+
+.foto {
+	padding: 15px 15px 15px 15px;
+	border-style: solid;
+	border-width: 5px;
+	border-color: #333;
+}
+
+.datiArt {
+	font-size: 16px;
+	text-align: left;
+}
+
+#info {
+	margin: 50px 25px 25px 50px;
+}
+
+.bio-title {
+	font-size: 25px;
+	text-align: center;
+}
+
+.bio {
+	text-align: left;
+	margin-bottom: 25px;
+	width: 65%;
+}
+
+.flex-bio {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin-top: 50px;
+	margin-bottom: 50px;
+	margin: 0;
+}
+
+.gal_title {
+	margin: 0 auto;
+	text-align: center;
+	font-size: 25px;
+	margin-bottom: 15px;
+	margin-top: 25px;
+}
+
+.column {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: center;
+	flex-wrap: wrap;
+	padding: 30px 20px 30px 20px;
+	margin: 0;
+}
+
+.el {
+	padding: 5px 5px;
+}
+
+.quadro {
+	padding: 15px 15px 15px 15px;
+	border-style: solid;
+	border-width: 3px;
+	border-color: #333;
+}
+
+.quadro img {
+	height: auto;
+	width: 450px;
+}
+
+.title {
+	background-color: #333;
+	text-align: center;
+}
+
+.title a {
+	color: white;
+	text-decoration: none;
+}
+
+.title a:hover {
+	color: gray;
+	text-decoration: none;
+}
