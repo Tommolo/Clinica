@@ -2,6 +2,7 @@ package it.uniroma3.siw.spring.controller;
 import java.io.IOException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
@@ -15,7 +16,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 import it.uniroma3.siw.spring.controller.validator.EsameValidator;
 import it.uniroma3.siw.spring.misc.FileUploadUtil;
+import it.uniroma3.siw.spring.model.Credentials;
 import it.uniroma3.siw.spring.model.Esame;
+import org.springframework.security.core.userdetails.UserDetails;
 import it.uniroma3.siw.spring.service.CredentialsService;
 import it.uniroma3.siw.spring.service.EsameService;
 import it.uniroma3.siw.spring.service.MedicoService;
@@ -41,6 +44,10 @@ public class EsameController {
 
     @Autowired
 	private CredentialsService credentialsService;
+
+
+    
+  
     
     /**
      * un amministratore vuole inserire un nuovo esame
@@ -63,8 +70,8 @@ public class EsameController {
      * @return string
      */
     @RequestMapping(value = "/esame/{id}", method = RequestMethod.GET)
-    public String getQuadro(@PathVariable("id") Long id, Model model) {
-    	model.addAttribute("esame", this.esameService.quadroPerId(id));
+    public String getEsame(@PathVariable("id") Long id, Model model) {
+    	model.addAttribute("esame", this.esameService.esamePerId(id));
     	return "esame";
     }
     
@@ -77,7 +84,7 @@ public class EsameController {
     @RequestMapping(value = "/admin/esame/{id}", method = RequestMethod.GET)
     public String deleteEsame(@PathVariable("id") Long id, Model model) {
     	this.esameService.cancella(id);
-    	model.addAttribute("esamii", this.esameService.tuttiOrdinatiPerTitolo());
+    	model.addAttribute("esami", this.esameService.tuttiOrdinatiPerTitolo());
     	return "esami";
     }
 
@@ -88,7 +95,8 @@ public class EsameController {
      */
     @RequestMapping(value = "/esami", method = RequestMethod.GET)
     public String getEsami(Model model) {
-    		model.addAttribute("esami", this.esameService.tuttiOrdinatiPerTitolo());
+    		UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    		model.addAttribute("esami", this.esameService.perPaziente(this.credentialsService.getCredentials(userDetails.getUsername())));
     		return "esami";
     }
 

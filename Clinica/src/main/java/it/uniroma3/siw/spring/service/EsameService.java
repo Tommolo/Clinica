@@ -8,6 +8,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import it.uniroma3.siw.spring.model.Credentials;
 import it.uniroma3.siw.spring.model.Esame;
 import it.uniroma3.siw.spring.model.Medico;
 
@@ -38,12 +39,17 @@ public class EsameService {
 	
 	
 	@Transactional
-	public List<Esame> perArtista(Medico med) {
+	public List<Esame> perMedico(Medico med) {
 		return (List<Esame>) esameRepository.findByMedico(med);
 	}
 	
 	@Transactional
-	public Esame quadroPerId(Long id) {
+	public List<Esame> perPaziente(Credentials paz){
+		return (List<Esame>) esameRepository.findByCredential(paz);
+	}
+	
+	@Transactional
+	public Esame esamePerId(Long id) {
 		Optional<Esame> optional = esameRepository.findById(id);
 		if (optional.isPresent())
 			return optional.get();

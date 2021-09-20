@@ -14,6 +14,7 @@ public class AdminController {
 	@RequestMapping(value="/admin/areaAdmin", method = RequestMethod.GET)
     public String viewAdmin() {
         return "admin/areaAdmin";
+        
     }
 
 }

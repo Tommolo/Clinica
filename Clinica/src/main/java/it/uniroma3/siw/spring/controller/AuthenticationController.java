@@ -20,7 +20,7 @@ import it.uniroma3.siw.spring.service.CredentialsService;
 @Controller
 public class AuthenticationController {
 	
-	public static Credentials credentialsCorrente;
+
 	 
 	@Autowired
 	private CredentialsService credentialsService;
@@ -54,7 +54,7 @@ public class AuthenticationController {
         
     	UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
     	Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
-    	credentialsCorrente=credentials;
+    
     	if (credentials.getRole().equals(Credentials.ADMIN_ROLE)) {
             return "admin/areaAdmin";
         }

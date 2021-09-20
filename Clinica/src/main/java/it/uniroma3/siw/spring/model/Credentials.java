@@ -1,11 +1,14 @@
 package it.uniroma3.siw.spring.model;
 
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import lombok.AllArgsConstructor;
@@ -36,5 +39,11 @@ public class Credentials {
 	@OneToOne(cascade = CascadeType.ALL)
 	private User user;
 	
+	@OneToMany(mappedBy = "credential", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<Esame> esami;
+	
+	public Credentials(String nome) {
+		this.username=nome;
+	}
 	
 }
