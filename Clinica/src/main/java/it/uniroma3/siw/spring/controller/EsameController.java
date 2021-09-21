@@ -75,13 +75,13 @@ public class EsameController {
     	return "esame";
     }
     
-    /**
+    /*
      * un amministratore vuole cancellare un determinato esame
      * @param id
      * @param model
      * @return
-
-    @RequestMapping(value = "/admin/esame/{id}", method = RequestMethod.GET)
+*/
+    @RequestMapping(value = "/esameCancella/{id}", method = RequestMethod.GET)
     public String deleteEsame(@PathVariable("id") Long id, Model model) {
     	this.esameService.cancella(id);
     	model.addAttribute("esami", this.esameService.tuttiOrdinatiPerTitolo());
@@ -96,6 +96,7 @@ public class EsameController {
     @RequestMapping(value = "/esami", method = RequestMethod.GET)
     public String getEsami(Model model) {
     		UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    		model.addAttribute("credential",this.credentialsService.getCredentials(userDetails.getUsername()));
     		model.addAttribute("esami", this.esameService.perPaziente(this.credentialsService.getCredentials(userDetails.getUsername())));
     		return "esami";
     }
@@ -109,7 +110,7 @@ public class EsameController {
             String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
             esame.setFoto(fileName);
         	this.esameService.inserisci(esame);
-            String uploadDir = "uploadable/quadri/" + esame.getId();
+            String uploadDir = "uploadable/esami/" + esame.getId();
             FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
             model.addAttribute("esami", this.esameService.tuttiOrdinatiPerTitolo());
             return "esami";

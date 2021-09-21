@@ -9,8 +9,8 @@
 <body>
 	<nav class='topnav'>
 		<a th:href="@{/index}">Home</a> <a href="medici" th:href="@{/medici}">Medici</a>
-		<a th:href="@{/tipoEsami}">TipologieEsami</a> <a class="active"
-			href="medici" th:href="@{/esami}">Esami</a> <a href="#informazioni">Informazioni</a>
+		<a th:href="@{/tipoEsami}">TipologieEsami</a>
+		 <a class="active" href="medici" th:href="@{/esami}">Esami</a> <a href="#informazioni">Informazioni</a>
 		<div class="dropdown">
 			<button class="dropbtn">
 				Utente <i class="fa fa-caret-down"></i>
@@ -44,8 +44,8 @@
 			<ul>
 				<li th:each="esame : ${esami}"><a href="esame.html"
 					th:href="@{'/esame' + '/' + ${esame.id}}" th:text="${esame.titolo}">Titolo</a>
-					<span class="canc" sec:authorize="hasAuthority('ADMIN')"><a
-						href="esami.html" th:href="@{'/admin/esame/' + ${esame.id}}">
+					<span class="canc" ><a
+						href="esami.html" th:href="@{'/esameCancella/' + ${esame.id}}">
 							Elimina</a></span></li>
 			</ul>
 		</div>

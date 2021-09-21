@@ -42,14 +42,14 @@ public class Medico {
 	private List<TipologiaEsame> tipoEsami;
 	
 	@Column(nullable=true)
-	private String ritratto;
+	private String foto;
 	@Column(length=5096)
 	private String biografia;
 
 	 @Transient
 	    public String getPhotosImagePath() {
-	        if (ritratto.equals(null) || id.equals(null)) return null;
+	        if (foto.equals(null) || id.equals(null)) return null;
 	         
-	        return "/uploadable/artista-ritratto/" + id + "/" + ritratto;
+	        return "/uploadable/medico-foto/" + id + "/" + foto;
 	    }
 }

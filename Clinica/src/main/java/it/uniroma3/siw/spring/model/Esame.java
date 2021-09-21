@@ -57,7 +57,7 @@ public class Esame {
 	    public String getPhotosImagePath() {
 	        if (foto.equals(null) || id.equals(null)) return null;
 	         
-	        return "/uploadable/quadri/" + id + "/" + foto;
+	        return "/uploadable/esami/" + id + "/" + foto;
 	    }
 
 }

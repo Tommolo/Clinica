@@ -101,9 +101,9 @@ public class MedicoController {
         if (!bindingResult.hasErrors()) {
         	
         	String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
-        	medico.setRitratto(fileName);
+        	medico.setFoto(fileName);
         	this.medicoService.inserisci(medico);
-        	String uploadDir = "uploadable/artista-ritratto/" + medico.getId();
+        	String uploadDir = "uploadable/medico-foto/" + medico.getId();
             FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);           
             model.addAttribute("medici", this.medicoService.tuttiOrdinati());
             return "medici";
