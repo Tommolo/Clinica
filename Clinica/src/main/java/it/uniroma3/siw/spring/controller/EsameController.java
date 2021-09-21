@@ -3,6 +3,7 @@ import java.io.IOException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
@@ -16,9 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import it.uniroma3.siw.spring.controller.validator.EsameValidator;
 import it.uniroma3.siw.spring.misc.FileUploadUtil;
-import it.uniroma3.siw.spring.model.Credentials;
 import it.uniroma3.siw.spring.model.Esame;
-import org.springframework.security.core.userdetails.UserDetails;
 import it.uniroma3.siw.spring.service.CredentialsService;
 import it.uniroma3.siw.spring.service.EsameService;
 import it.uniroma3.siw.spring.service.MedicoService;
@@ -75,12 +74,12 @@ public class EsameController {
     	return "esame";
     }
     
-    /*
+    /**
      * un amministratore vuole cancellare un determinato esame
      * @param id
      * @param model
      * @return
-*/
+     */
     @RequestMapping(value = "/esameCancella/{id}", method = RequestMethod.GET)
     public String deleteEsame(@PathVariable("id") Long id, Model model) {
     	this.esameService.cancella(id);
@@ -89,7 +88,7 @@ public class EsameController {
     }
 
     /**
-     * un utente vuole visualizzare la lista di quadri
+     * un utente vuole visualizzare la lista di esami per paziente
      * @param model
      * @return string
      */

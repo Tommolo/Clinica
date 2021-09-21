@@ -14,7 +14,6 @@ import it.uniroma3.siw.spring.model.Esame;
 public interface EsameRepository extends CrudRepository<Esame, Long> {
 	
 	public List<Esame> findByTitolo(String titolo);
-	
 
 	public List<Esame> findByTitoloAndCredential(String titolo, Credentials cred);
 	
