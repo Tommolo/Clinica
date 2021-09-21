@@ -7,7 +7,6 @@ import org.springframework.stereotype.Repository;
 
 import it.uniroma3.siw.spring.model.Credentials;
 import it.uniroma3.siw.spring.model.Esame;
-import it.uniroma3.siw.spring.model.Medico;
 
 
 
@@ -16,9 +15,8 @@ public interface EsameRepository extends CrudRepository<Esame, Long> {
 	
 	public List<Esame> findByTitolo(String titolo);
 	
-	public List<Esame> findByMedico(Medico medico);
-	
-	public List<Esame> findByTitoloAndMedico(String titolo, Medico med);
+
+	public List<Esame> findByTitoloAndCredential(String titolo, Credentials cred);
 	
 	public List<Esame> findByCredential(Credentials cred);
 	

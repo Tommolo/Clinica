@@ -10,8 +10,6 @@ import org.springframework.stereotype.Service;
 
 import it.uniroma3.siw.spring.model.Credentials;
 import it.uniroma3.siw.spring.model.Esame;
-import it.uniroma3.siw.spring.model.Medico;
-
 import it.uniroma3.siw.spring.repository.EsameRepository;
 
 
@@ -37,12 +35,6 @@ public class EsameService {
 		return this.esameRepository.findByOrderByTitoloAsc();
 	}
 	
-	
-	@Transactional
-	public List<Esame> perMedico(Medico med) {
-		return (List<Esame>) esameRepository.findByMedico(med);
-	}
-	
 	@Transactional
 	public List<Esame> perPaziente(Credentials paz){
 		return (List<Esame>) esameRepository.findByCredential(paz);
@@ -61,8 +53,8 @@ public class EsameService {
 	
 	@Transactional 
 	public boolean alreadyExists(Esame op) {
-		List<Esame> quadri = this.esameRepository.findByTitoloAndMedico(op.getTitolo(), op.getMedico());
-		if (quadri.size() > 0)
+		List<Esame> esami = this.esameRepository.findByTitoloAndCredential(op.getTitolo(), op.getCredential());
+		if (esami.size() > 0)
 			return true;
 		else 
 			return false;
