@@ -10,8 +10,9 @@
 	<nav class='topnav'>
 		<a th:href="@{/index}">Home</a> <a class="active" href="artisti"
 			th:href="@{/medici}">Medici</a> <a href="tipoEsami.html"
-			th:href="@{/tipoEsami}">TipologieEsami</a> <a href="esami.html"
-			th:href="@{/esami}">Esami</a> <a href="#informazioni">Informazioni</a>
+			th:href="@{/tipoEsami}">TipologieEsami</a> <span
+				sec:authorize="hasAuthority('DEFAULT')"><a href="esami.html"
+			th:href="@{/esami}">Esami</a> </span><a href="#informazioni">Informazioni</a>
 		<div class="dropdown">
 			<button class="dropbtn">
 				Utente <i class="fa fa-caret-down"></i>
