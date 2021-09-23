@@ -1,5 +1,9 @@
 package it.uniroma3.siw.spring.model;
 
+import java.time.LocalDate;
+import java.util.Date;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -10,17 +14,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import java.time.LocalDate;
-
-import javax.persistence.Column;
 
 @Entity
 @Table(name = "esame")
@@ -42,9 +40,11 @@ public class Esame {
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "medico_id")
 	private Medico medico;
-	@Column(nullable = false)
-	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-	private LocalDate dataDiPrenotazione;
+	
+	
+	@JoinColumn(name = "data")
+	private LocalDate dataRisultato=LocalDate.now();;
+	
 	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "credential_id")

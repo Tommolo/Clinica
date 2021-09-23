@@ -25,7 +25,7 @@ public class EsameValidator implements Validator {
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "titolo", "required");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "descrizione", "required");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "tipoEsame", "required");
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "dataDiPrenotazione", "required");
+
 
 		if (!errors.hasErrors()) {
 			logger.debug("confermato: valori non nulli");

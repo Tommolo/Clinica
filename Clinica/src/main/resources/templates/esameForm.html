@@ -10,7 +10,7 @@
 	<nav th:replace="fragments/myH.html :: nav(index='/default')"></nav>
 	<section>
 		<div class="title">
-			<p>Inserisci i dati dell'esame</p>
+			<p>Inserisci i risultati dell'esame</p>
 		</div>
 		<form th:action="@{/admin/esame}" method="POST" th:object="${esame}"
 			enctype="multipart/form-data">
@@ -21,7 +21,7 @@
 			<div class="inserisci">
 				<div class="row">
 					<div class="col-1">
-						<label>Nome:</label>
+						<label>Titolo:</label>
 					</div>
 					<div class="col-2">
 						<input type="text" th:field="*{titolo}" />
@@ -63,16 +63,10 @@
 						</select>
 					</div>
 				</div>
-				<div class="row">
-					<div class="col-1">
-						<label>Data di Prenotazione:</label>
+					<div class="column">
+					<b>Data esame</b>
+					<p class="infot"  th:text="${esame.dataRisultato}">19-07-1999</p>
 					</div>
-					<div class="col-2">
-						<input type="date" th:field="*{dataDiPrenotazione}" />
-					</div>
-					<div th:if="${#fields.hasErrors('dataDiPrenotazione')}"
-						th:errors="*{dataDiPrenotazione}"></div>
-				</div>
 				<div class="row">
 					<div class="col-1">
 						<label>Foto:</label>
