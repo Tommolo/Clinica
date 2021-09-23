@@ -14,7 +14,7 @@ public interface TipologiaEsameRepository extends CrudRepository<TipologiaEsame,
 	
 	public List<TipologiaEsame> findByMedico(Medico med);
 	
-	//riporta le collezione ordinate per ordine alfabetico
+	//riporta le tipologie di esame ordinate per ordine alfabetico
 	public List<TipologiaEsame> findByOrderByNomeAsc();
 
 }
