@@ -32,7 +32,7 @@ public class TipologiaEsameController {
     
     /**
      * azione dell'amministratore
-     * Crea un nuovo oggetto collezione e reindirizza alla pagina collezioneForm
+     * Crea un nuovo oggetto tipoEsame e reindirizza alla pagina tipoEsameForm
      * @param model
      * @return string
      */
@@ -50,7 +50,7 @@ public class TipologiaEsameController {
      * @return string
      */
     @RequestMapping(value = "/tipoEsame/{id}", method = RequestMethod.GET)
-    public String gettipoEsame(@PathVariable("id") Long id, Model model) {
+    public String getTipoEsame(@PathVariable("id") Long id, Model model) {
     	model.addAttribute("tipoEsame", this.tipologiaService.tipoEsamePerId(id));
     	return "tipoEsame";
     }
@@ -61,7 +61,7 @@ public class TipologiaEsameController {
      * @return string
      */
     @RequestMapping(value = "/tipoEsami", method = RequestMethod.GET)
-    public String getCollezioni(Model model) {
+    public String getTipoEsami(Model model) {
     		model.addAttribute("tipoEsami", this.tipologiaService.tuttiOrdinati());
     		return "tipoEsami";
     }
@@ -73,14 +73,14 @@ public class TipologiaEsameController {
      * @return string
      */
     @RequestMapping(value = "/admin/tipoEsame/{id}", method = RequestMethod.GET)
-    public String deleteCollezione(@PathVariable("id") Long id, Model model) {
+    public String deleteTipoEsame(@PathVariable("id") Long id, Model model) {
     	this.tipologiaService.cancella(id);
     	model.addAttribute("tipoEsami", this.tipologiaService.tuttiOrdinati());
     	return "tipoEsami";
     }
     
     @RequestMapping(value = "/admin/tipoEsame", method = RequestMethod.POST)
-    public String addQuadro(@ModelAttribute("tipoEsame") TipologiaEsame tipoEsame, 
+    public String addEsame(@ModelAttribute("tipoEsame") TipologiaEsame tipoEsame, 
     									Model model, BindingResult bindingResult) {
     	this.tipologiaValidator.validate(tipoEsame, bindingResult);
         if (!bindingResult.hasErrors()) {

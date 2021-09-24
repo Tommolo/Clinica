@@ -16,7 +16,7 @@ import it.uniroma3.siw.spring.service.TipologiaEsameService;
 public class TipologiaEsameValidator implements Validator {
 	
 	@Autowired
-	private TipologiaEsameService collezioneService;
+	private TipologiaEsameService tipoService;
 	
 	private static final Logger logger = LoggerFactory.getLogger(EsameValidator.class);
 
@@ -28,7 +28,7 @@ public class TipologiaEsameValidator implements Validator {
 
 		if (!errors.hasErrors()) {
 			logger.debug("confermato: valori non nulli");
-			if (this.collezioneService.alreadyExists((TipologiaEsame)o)) {
+			if (this.tipoService.alreadyExists((TipologiaEsame)o)) {
 				logger.debug("e' un duplicato");
 				errors.reject("collezione.duplicato");
 			}
