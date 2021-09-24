@@ -12,7 +12,7 @@
 		<div class="title">
 			<p>Inserisci i dati della tipologia di esame</p>
 		</div>
-		<form th:action="@{/tipoEsame}" method="POST"
+		<form th:action="@{/admin/tipoEsame}" method="POST"
 			th:object="${tipoEsame}">
 			<div th:if="${#fields.hasGlobalErrors()}">
 				<p th:each="err : ${#fields.globalErrors()}" th:text="${err}"

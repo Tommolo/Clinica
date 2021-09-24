@@ -52,8 +52,8 @@ public class TipologiaEsameService {
 	
 	@Transactional
 	public boolean alreadyExists(TipologiaEsame tip) {
-		List<TipologiaEsame> tipologie = this.tipologiaRepository.findByNome(tip.getNome());
-		if (tipologie.size() > 0) {
+		List<TipologiaEsame> collezioni = this.tipologiaRepository.findByNome(tip.getNome());
+		if (collezioni.size() > 0) {
 			return true;
 		}
 		return false;
