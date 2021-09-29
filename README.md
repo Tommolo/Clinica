@@ -6,7 +6,7 @@ Attore primario: utente non registrato
 Scenario principale di successo: 
   -L'utente consulta l'elenco delle tipologie di esame
   -L'utente sceglie una tipologia di esame e ne richiede i dettagli 
-  -Il sistema mostra i dettagli della tipologia di esame scelta dall'utente
+  -Il sistema mostra descrizione e nome della tipologia di esame
 L'utente ripete i passi precedenti un numero indefinito di volte
 
 
