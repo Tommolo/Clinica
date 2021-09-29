@@ -28,3 +28,14 @@ Scenario principale:
   -Il sistema mostra il dettaglio dell'esame
   -Il paziente ripete i passi precedenti finché necessario
 Precondizioni: il paziente è identificato e autenticato
+
+Caso d'uso UC4: inserimento tipologia di esame
+Attore primario: amministrazione
+Scenario principale:
+-L'amministratore inserisce una nuova tipologia di esame specificandone i dettagli
+-Il sistema registra la tipologia di esame
+-I punti precedenti vengono ripetuti fino a che necessario
+Precondizioni: l'amministratore è identificato e autenticato
+
+Caso d'uso UC5: inserimento medico. Attore primario: amministrazione. Si presuppone che l’utente principale sia quello registrato con appositi permessi di “amministrazione”, registrato con un apposito ruolo su DB in grado di effettuare operazioni di creazione del dato come quello dell’esame.
+Scenario principale di successo: L'amministrazione seleziona la voce "inserisci medico" Il sistema mostra la form L'amministrazione inserisce nome, cognome, specializzazione e foto del medico Il sistema registra il medico e mostra la lista di tutti i medici
