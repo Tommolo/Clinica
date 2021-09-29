@@ -9,7 +9,7 @@
 <body>
 	<nav class='topnav'>
 		<a th:href="@{/index}">Home</a> <a href="artisti" th:href="@{/medici}">Medici</a>
-		<a class="active" href="@{/tipoEsami}">TipologieEsami</a><span
+		<a class="active">TipologieEsami</a><span
 				sec:authorize="hasAuthority('DEFAULT')"> <a
 			href="artisti" th:href="@{/esami}">Esami</a> </span> <a href="#informazioni">Informazioni</a>
 		<div class="dropdown">
